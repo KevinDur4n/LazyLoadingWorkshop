@@ -5,6 +5,6 @@ module.exports = {
     src: '/_dist_',
   },
   buildOptions: {
-    baseUrl: '',
+    baseUrl: 'https://kevindur4n.github.io/LazyLoadingWorkshop',
   },
 }
