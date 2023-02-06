@@ -8,77 +8,112 @@
       name="description"
       content="Web site created using create-snowpack-app"
     />
-    <!--
-      Snowpack will replace %PUBLIC_URL% with the value you have for `baseUrl` in `snowpack.config.js`.
-      Make sure to update it with your GitHub Page URL. https://<your-username>.github.io/<your-repo-name>
-
-      More about config options:
-      - https://www.snowpack.dev/reference/configuration#buildoptions.baseurl
-    -->
+    
     <link
       rel="stylesheet"
       type="text/css"
       href="%PUBLIC_URL%/_dist_/index.css"
     />
     <title>Snowpack & Tailwind App</title>
+
+    <style>
+      .spinner {
+        /*border: 3px solid #f3f3f3;  Light grey */
+        border-top: 3px solid #3498db; /* Blue */
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        animation: spin 1s linear infinite;
+      }
+
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+    </style>
+
+    <style>
+      .lazy-loading {
+        height: 0;
+        padding-bottom: 20%;
+        position: relative;
+        content: 'Cargando';
+      }
+      
+      .lazy-loading:before {
+        content: '';
+        position: absolute;
+        left: 45%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        border-top: 3px solid #3498db; /* Blue */
+        animation: spinner 0.6s linear infinite;
+      }
+
+      .loading-label {
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 12px;
+        color: #333;
+      }
+      
+      
+      @keyframes spinner {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+     
+
+      .name{
+        position: fixed;
+        bottom: 5%;
+        right: 5%;
+        color: white;
+      }
+    </style>
+
+    
+
   </head>
   <body>
-    <!--
-      This HTML file is a template.
-
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-
-      Start modyfing from here.
-    -->
+    
     <div class="py-10 max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center">
-        <p
-          class="text-base leading-6 text-indigo-600 font-semibold tracking-wide uppercase"
-        >
-          Snowpack
-        </p>
+       
         <h3
-          class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl sm:leading-10"
+          class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-white sm:text-4xl sm:leading-10"
         >
-          Tailwind template
-        </h3>
+        Lazy loading WorkShop
+      </h3>
         <p class="mt-4 max-w-2xl text-xl leading-7 text-gray-500 mx-auto">
-          Use this template to build awesome websites using Snowpack and
-          Tailwind. It also includes Prettier and automatic publish to GitHub
-          pages using GitHub Actions. Learn more:
+          This project is for practice the lazy loading pattern, we get the images of API <a class="text-blue-600" href="https://randomfox.ca">randomfox.ca</a>
         </p>
-        <ul
-          class="text-xl leading-7 sm:flex justify-around sm:max-w-2xl sm:mx-auto mt-10"
-        >
-          <li class="my-4 p-4 px-6 bg-gray-300 hover:bg-gray-500">
-            <a href="https://snowpack.dev" target="_blank">snowpack.dev</a>
-          </li>
-          <li class="my-4 p-4 px-6 bg-gray-300 hover:bg-gray-500">
-            <a href="https://tailwindcss.com" target="_blank"
-              >tailwindcss.com</a
-            >
-          </li>
-          <li class="my-4 p-4 px-6 bg-gray-300 hover:bg-gray-500">
-            <a
-              href="https://docs.github.com/en/free-pro-team@latest/actions"
-              target="_blank"
-              >GitHub Actions</a
-            >
-          </li>
-        </ul>
-        <p class="mt-14 text-xl leading-7 text-gray-500">Start using it:</p>
-        <div class="my-5 bg-gray-800 p-5 text-white">
-          <code>
-            npx create-snowpack-app my-app --template snowpack-template-tailwind
-          </code>
+        <div class=" ml-20 text-left text-gray-500">
+          <p>Instructions:</p>
+          <ul class="list-decimal	">
+            <li>Open the developer tools of your browser and select the slower network.</li>
+            <li>Now, press the button Add image.</li>
+            <li>Each images start to download, while the spinner is show.</li>
+            <li>Until the image is loaded, it is show.</li>
+          </ul>
+
         </div>
-        <p class="mt-16 text-xl leading-7 text-gray-500 underline">
-          <a href="https://github.com/jonalvarezz/snowpack-template-tailwind"
-            >See on GitHub</a
-          >
-        </p>
       </div>
+      <div class="p-4 text-center ">
+        <button id="btn-add-image" class=" bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">
+          Agregar imagen
+        </button>
+      </div>
+      <div id="images">
+    </div>
+
+    <div >
+      <span class="name">By Kevin Duran</span>
     </div>
 
     <!-- Add more scripts here -->
